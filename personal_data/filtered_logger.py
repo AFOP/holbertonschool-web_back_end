@@ -51,8 +51,9 @@ def get_logger() -> logging.Logger:
     lg.addHandler(sh)
     return lg
 
+
 def get_db() -> mysql.connector.connection.MySQLConnection:
-    # Obtén las credenciales de las variables de entorno
+    """ Get credentials from environment variables """
     username = os.getenv("PERSONAL_DATA_DB_USERNAME", "root")
     password = os.getenv("PERSONAL_DATA_DB_PASSWORD", "")
     host = os.getenv("PERSONAL_DATA_DB_HOST", "localhost")
