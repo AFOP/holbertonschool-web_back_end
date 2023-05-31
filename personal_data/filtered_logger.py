@@ -68,3 +68,29 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     )
 
     return conn
+
+def main():
+    """
+    main function
+    """
+    # Get the database connection
+    conn = get_db()
+
+    # Create a cursor to execute queries
+    users = conn.cursor()
+
+    # Execute a query to retrieve data from the users table
+    users.execute("SELECT CONCAT('name=', name, ';ssn=', ssn, ';ip=', ip, \
+        ';user_agent', user_agent, ';') AS message FROM users;")
+    formatter = RedactingFormatter(fields=PII_FIELDS)
+    logger = get_logger()
+
+    for user in users:
+        logger.log(logging.INFO, user[0])
+
+    # Close the cursor and the connection
+    users.close()
+    conn.close()
+
+if __name__ == "__main__":
+    main()
