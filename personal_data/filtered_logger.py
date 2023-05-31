@@ -11,8 +11,9 @@ Return: the log message obfuscated
 
 
 import re
+from typing import List
 
-def filter_datum(fields: str, redaction: str, message: str,
+def filter_datum(fields: List[str], redaction: str, message: str,
                  separator: str) -> str:
     return re.sub(r"(\w+)=([a-zA-Z0-9@\.\-\(\)\ \:\^\<\>\~\$\%\@\?\!\/]*)",
                   lambda match: match.group(1) + "=" + redaction
