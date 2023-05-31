@@ -6,6 +6,7 @@
 
 import bcrypt
 
+
 def hash_password(password: str) -> bytes:
     """ hash password """
     # Generate a salt
