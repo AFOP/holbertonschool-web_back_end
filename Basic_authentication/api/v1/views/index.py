@@ -10,7 +10,6 @@ unauthorized_bp = Blueprint('unauthorized_bp', __name__)
 forbidden_bp = Blueprint('forbidden_bp', __name__)
 
 
-
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
 def status() -> str:
     """ GET /api/v1/status
