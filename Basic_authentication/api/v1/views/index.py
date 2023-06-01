@@ -7,6 +7,8 @@ from flask import Blueprint, abort
 
 
 unauthorized_bp = Blueprint('unauthorized_bp', __name__)
+forbidden_bp = Blueprint('forbidden_bp', __name__)
+
 
 
 @app_views.route('/status', methods=['GET'], strict_slashes=False)
@@ -37,3 +39,12 @@ def unauthorized():
       - 401
     """
     return abort(401)
+
+
+@app_views.route('/forbidden', strict_slashes=False)
+def forbidden():
+    """ GET /api/v1/forbidden
+    Return:
+      - 403
+    """
+    return abort(403)
