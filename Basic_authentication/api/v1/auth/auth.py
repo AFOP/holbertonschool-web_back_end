@@ -10,31 +10,35 @@ class Auth:
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
             Function require_auth
-            Return: Fase
+            Return: False
         """
-        if path is None:
-            return True
         if excluded_paths is None or len(excluded_paths) == 0:
             return True
-        if path.endswith('/'):
-            path = path[:-1]
+        if path is not None:
+            if path[len(path) - 1] != '/':
+                path += '/'
+        if path is None:
+            return True
         for excluded_path in excluded_paths:
-            if excluded_path.endswith('/'):
-                excluded_path = excluded_path[:-1]
+            asterisk = excluded_path.find("*")
+            if asterisk != -1 and len(path) >= len(excluded_path):
+                pathcpy = path[: asterisk]
+                if pathcpy == excluded_path[: asterisk]:
+                    return False
             if path == excluded_path:
                 return False
         return True
 
-    def authorization_header(self, request=None) -> str:
+    def authorization_header(self, request) -> str:
         """
             Function authorization_header
             Return: None
         """
-        if request is None or 'Authorization' not in request.headers:
+        if request is None:
             return None
         return request.headers.get('Authorization')
 
-    def current_user(self, request=None) -> TypeVar('User'):
+    def current_user(self, request) -> TypeVar('User'):
         """
             Function current_user
             Return: None
