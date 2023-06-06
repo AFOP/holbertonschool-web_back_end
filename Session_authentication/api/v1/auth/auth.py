@@ -45,7 +45,7 @@ class Auth():
         current_user function
         """
         return None
-    
+
     def session_cookie(self, request=None):
         """
         Return cookie value from request.
