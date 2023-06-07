@@ -1,13 +1,13 @@
 # User authentication service
 
-In the industry, you should not implement your own authentication system and use a module or framework that doing it for you (like in Python-Flask: (Flask-User)[https://intranet.hbtn.io/rltoken/RlAyQIsd3S00AFdTiorEUQ]). Here, for the learning purpose, we will walk through each step of this mechanism to understand it by doing.
+In the industry, you should not implement your own authentication system and use a module or framework that doing it for you (like in Python-Flask: [Flask-User](https://intranet.hbtn.io/rltoken/RlAyQIsd3S00AFdTiorEUQ). Here, for the learning purpose, we will walk through each step of this mechanism to understand it by doing.
 
 ## Resources
 ### Read or watch:
 
-- (Flask documentation)[https://intranet.hbtn.io/rltoken/T03S8hNvX_1hXW66qK0Z6w]
-- (Requests module)[https://intranet.hbtn.io/rltoken/nf0Y9myaDn6kIJckvB9E4w]
-- (HTTP status codes)[https://intranet.hbtn.io/rltoken/a_OTic47lD-ZhoWKIGINBw]
+- [Flask documentation](https://intranet.hbtn.io/rltoken/T03S8hNvX_1hXW66qK0Z6w)
+- [Requests module](https://intranet.hbtn.io/rltoken/nf0Y9myaDn6kIJckvB9E4w)
+- [HTTP status codes](https://intranet.hbtn.io/rltoken/a_OTic47lD-ZhoWKIGINBw)
 
 ## Learning Objectives
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
@@ -37,6 +37,6 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 
 ## Setup
 You will need to install bcrypt
-´´´
+```
 pip3 install bcrypt
-´´´
+```
