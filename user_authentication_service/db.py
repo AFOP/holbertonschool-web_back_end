@@ -49,10 +49,10 @@ class DB:
 
         return user
 
-    def find_user_by(self, **kwargs):
+    def find_user_by(self, **kwargs) -> User:
         """Find a user in the database based on the input arguments
         """
         user = self._session.query(User).filter_by(**kwargs).first()
         if not user:
             raise NoResultFound
-        return None
+        return user
