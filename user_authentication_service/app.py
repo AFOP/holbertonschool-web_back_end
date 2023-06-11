@@ -64,7 +64,7 @@ def logout() -> str:
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        return redirect('/')
+        return redirect('/home')
     else:
         abort(403)
 
