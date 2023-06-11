@@ -3,7 +3,7 @@
 Flask app
 """
 from auth import Auth
-from flask import request, Flask, jsonify, abort
+from flask import request, Flask, jsonify, abort, redirect
 
 AUTH = Auth()
 app = Flask(__name__)
@@ -64,9 +64,7 @@ def logout() -> str:
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
-        response = str(status=302)
-        response.headers['Location'] = '/'
-        return response
+        return redirect('/')
     else:
         abort(403)
 
