@@ -16,8 +16,9 @@ DATA = ['id', 'email', 'hashed_password', 'session_id', 'reset_token']
 
 
 class DB:
-
+    """ class DB """
     def __init__(self):
+        """ __init__ """
         self._engine = create_engine("sqlite:///a.db", echo=False)
         Base.metadata.drop_all(self._engine)
         Base.metadata.create_all(self._engine)
@@ -25,6 +26,7 @@ class DB:
 
     @property
     def _session(self):
+        """ _session """
         if self.__session is None:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
