@@ -3,7 +3,7 @@
 Flask app
 """
 from auth import Auth
-from flask import request, Flask, jsonify, abort, redirect, Response
+from flask import request, Flask, jsonify, abort, redirect
 
 AUTH = Auth()
 app = Flask(__name__)
@@ -54,27 +54,20 @@ def login() -> str:
 
 
 @app.route('/sessions', methods=['DELETE'], strict_slashes=False)
-def logout(self, request) -> Response:
-        """ logout
+def logout() -> str:
+    """ logout
 
     Return:
        str: message
     """
-        session_id = request.cookies.get('session_id')
-        user = self._db.find_user_by(session_id=session_id)
+    session_id = request.cookies.get('session_id')
+    user = AUTH.get_user_from_session_id(session_id)
+    if user:
+        AUTH.destroy_session(user.id)
+        return redirect('/')
+    else:
+        abort(403)
 
-        if user:
-            # Destroy the session
-            self._db.update_user(user.id, session_id=None)
-            # Redirect the user to GET /
-            response = Response(status=302)
-            response.headers['Location'] = '/'
-            return response
-        else:
-            # User does not exist, respond with 403 Forbidden
-            response = Response(status=403)
-            response.text = "Forbidden: Invalid session ID"
-            return response
 
 @app.route('/profile', methods=['GET'], strict_slashes=False)
 def profile() -> str:
