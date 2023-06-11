@@ -3,7 +3,7 @@
 Flask app
 """
 from auth import Auth
-from flask import Flask, jsonify, request, abort, redirect
+from flask import request, Flask, jsonify, abort, redirect
 
 AUTH = Auth()
 app = Flask(__name__)
