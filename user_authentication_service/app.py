@@ -3,7 +3,8 @@
 Flask app
 """
 from auth import Auth
-from flask import request, Flask, jsonify, abort, redirect
+from flask import Flask, jsonify, abort, redirect
+import requests
 
 AUTH = Auth()
 app = Flask(__name__)
@@ -26,8 +27,8 @@ def user() -> str:
     Returns:
         str: messege
     """
-    email = request.form.get('email')
-    password = request.form.get('password')
+    email = requests.form.get('email')
+    password = requests.form.get('password')
     try:
         AUTH.register_user(email, password)
         return jsonify({"email": f"{email}", "message": "user created"}), 200
@@ -42,8 +43,8 @@ def login() -> str:
     Returns:
         str: messege
     """
-    email = request.form.get('email')
-    password = request.form.get('password')
+    email = requests.form.get('email')
+    password = requests.form.get('password')
     valid_login = AUTH.valid_login(email, password)
     if not valid_login:
         abort(401)
@@ -60,7 +61,7 @@ def logout() -> str:
     Return:
        str: message
     """
-    session_id = request.cookies.get('session_id')
+    session_id = requests.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         AUTH.destroy_session(user.id)
@@ -76,7 +77,7 @@ def profile() -> str:
     Return:
        str: message
     """
-    session_id = request.cookies.get('session_id')
+    session_id = requests.cookies.get('session_id')
     user = AUTH.get_user_from_session_id(session_id)
     if user:
         return jsonify({"email": user.email}), 200
@@ -91,7 +92,7 @@ def get_reset_password_token() -> str:
     Return:
        str: message
     """
-    email = request.form.get('email')
+    email = requests.form.get('email')
     user = AUTH.create_session(email)
     if not user:
         abort(403)
@@ -107,9 +108,9 @@ def update_password() -> str:
     Return:
        str: message
     """
-    email = request.form.get('email')
-    reset_token = request.form.get('reset_token')
-    new_psw = request.form.get('new_password')
+    email = requests.form.get('email')
+    reset_token = requests.form.get('reset_token')
+    new_psw = requests.form.get('new_password')
     try:
         AUTH.update_password(reset_token, new_psw)
         return jsonify({"email": f"{email}",
