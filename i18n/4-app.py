@@ -28,7 +28,6 @@ def index():
     return render_template('4-index.html')
 
 
-@babel.localeselector
 def get_locale():
     """
     Get locale selector for babel
@@ -37,3 +36,5 @@ def get_locale():
     lang = locale if locale else request.accept_languages.best_match(
         app.config['LANGUAGES'])
     return lang
+
+babel.init_app(app, locale_selector=get_locale)
