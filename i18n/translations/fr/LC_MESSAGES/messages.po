@@ -4,9 +4,9 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid "home_title"
-msgstr "Bienvenue chez Holberton"
+msgstr 'Bienvenue chez Holberton'
 msgid "home_header"
-msgstr "Bonjour monde!"
+msgstr 'Bonjour monde!'
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2023-06-17 19:34-0500\n"
