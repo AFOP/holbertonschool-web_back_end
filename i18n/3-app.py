@@ -27,6 +27,7 @@ def index():
     """
     return render_template('3-index.html')
 
+
 @babel.localeselector
 def get_locale():
     """
