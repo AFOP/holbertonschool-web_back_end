@@ -6,8 +6,9 @@
 -- country, enumeration of countries: US, CO and TN, never null (= default will be the first element of the enumeration, here US)
 -- If the table already exists, your script should not fail
 -- Your script can be executed on any database
-CREATE TABLE IF NOT EXISTS users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    name VARCHAR(255)
-);
+CREATE TABLE IF NOT EXISTS `users` (  
+    `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `email` VARCHAR(255) NOT NULL UNIQUE,
+    `name` VARCHAR(255),
+    `country` ENUM('US', 'CO', 'TN') NOT NULL 
+)
