@@ -5,15 +5,15 @@ For this project, we expect you to look at this concept:
 ## Resources
 ### Read or watch:
 
-- ECMAScript 6 - ECMAScript 2015
-- Statements and declarations
-- Arrow functions
-- Default parameters
-- Rest parameter
-- Javascript ES6 — Iterables and Iterators
+- [ECMAScript 6 - ECMAScript 2015](https://intranet.hbtn.io/rltoken/Q20cy-_XFufANSBCW0hvog)
+- [Statements and declarations](https://intranet.hbtn.io/rltoken/OHkTGVz-DLmzmrpDuWDYBw)
+- [Arrow functions](https://intranet.hbtn.io/rltoken/5FxmFLP2qwTEo0puWUVHsQ)
+- [Default parameters](https://intranet.hbtn.io/rltoken/qZm6g37BqHVD9G96MLsnsg)
+- [Rest parameter](https://intranet.hbtn.io/rltoken/qD9tUS00akyWTDU7MKUAuA)
+- [Javascript ES6 — Iterables and Iterators](https://intranet.hbtn.io/rltoken/gIbZ-rjeyCteVm1GM5Xq0A)
 
 ## Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+At the end of this project, you are expected to be able to [explain to anyone](https://intranet.hbtn.io/rltoken/GT7hK6Qly9Rrureewp_arA), without the help of Google:
 
 - What ES6 is
 - New features introduced in ES6
