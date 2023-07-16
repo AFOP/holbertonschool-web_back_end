@@ -15,7 +15,7 @@ export default class Currency {
   /* setter name */
   set name(value) {
     if (typeof value !== 'string') throw TypeError('Name must be a string');
-      this._name = value;
+    this._name = value;
   }
 
   /* getter code */
@@ -26,7 +26,7 @@ export default class Currency {
   /* setter code */
   set code(value) {
     if (typeof value !== 'string') throw TypeError('Code must be a string');
-      this._code = value;
+    this._code = value;
   }
 
   displayFullCurrency() {
