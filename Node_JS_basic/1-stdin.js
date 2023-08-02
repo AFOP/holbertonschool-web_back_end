@@ -12,7 +12,7 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-console.log("Welcome to Holberton School, what is your name?");
+console.log("Welcome to Holberton School, what is your name?\n");
 
 // Verificar si la entrada es desde la línea de comandos o redirigida desde el comando 'echo'
 const isInputFromCommandLine = process.stdin.isTTY;
@@ -20,7 +20,7 @@ const isInputFromCommandLine = process.stdin.isTTY;
 rl.on('line', (input) => {
   console.log(`Your name is: ${input}`);
   if (!isInputFromCommandLine) {
-    console.log("This important software is now closing");
+    console.log("This important software is now closing\n");
   }
   rl.close();
 });
