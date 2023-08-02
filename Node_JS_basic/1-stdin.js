@@ -5,22 +5,13 @@
 // When the user ends the program, it should display This important software is now closing (followed by a new line)
 // Requirements:
 // Your code will be tested through a child process, make sure you have everything you need for that
-const readline = require('readline');
+process.stdout.write('Welcome to Holberton School, what is your name?\n');
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+process.stdin.on('readable', () => {
+  const input = process.stdin.read();
+  if (input !== null) process.stdout.write(`Your name is: ${input}`);
 });
 
-console.log("Welcome to Holberton School, what is your name?\n");
-
-// Verificar si la entrada es desde la línea de comandos o redirigida desde el comando 'echo'
-const isInputFromCommandLine = process.stdin.isTTY;
-
-rl.on('line', (input) => {
-  console.log(`Your name is: ${input}`);
-  if (!isInputFromCommandLine) {
-    console.log("This important software is now closing\n");
-  }
-  rl.close();
+process.stdin.on('end', () => {
+  process.stdout.write('This important software is now closing\n');
 });
