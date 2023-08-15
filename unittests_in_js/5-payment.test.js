@@ -2,13 +2,18 @@ const { expect } = require("chai");
 const sinon = require('sinon');
 const { spy } = require('sinon');
 
-const sendPaymentRequestToApi = require('./3-payment');
+const sendPaymentRequestToApi = require('./5-payment');
+
 
 describe('hooks', () => {
   let consoleSpy;
 
   beforeEach(() => {
     consoleSpy = sinon.spy(console, 'log');
+  });
+
+  afterEach(() => {
+    consoleSpy.mockRestore();
   });
 
   it('sendPaymentRequestToAPI', () => {
