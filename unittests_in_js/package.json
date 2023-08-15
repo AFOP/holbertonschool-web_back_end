@@ -5,5 +5,9 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "chai": "^4.3.7",
+    "sinon": "^15.2.0"
   }
 }
