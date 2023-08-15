@@ -2,7 +2,7 @@ const { expect } = require("chai");
 const sinon = require('sinon');
 const { spy } = require('sinon');
 
-const sendPaymentRequestToApi = require('./5-payment');
+const sendPaymentRequestToApi = require('./3-payment');
 
 
 describe('hooks', () => {
