@@ -4,16 +4,11 @@ const { spy } = require('sinon');
 
 const sendPaymentRequestToApi = require('./3-payment');
 
-
 describe('hooks', () => {
   let consoleSpy;
 
   beforeEach(() => {
     consoleSpy = sinon.spy(console, 'log');
-  });
-
-  afterEach(() => {
-    consoleSpy.mockRestore();
   });
 
   it('sendPaymentRequestToAPI', () => {
@@ -27,3 +22,8 @@ describe('hooks', () => {
     expect(consoleSpy.calledWithExactly('The total is: 20')).to.equal(true);
     expect(consoleSpy.calledOnce).to.equal(true);
   });
+
+  afterEach(() => {
+    consoleSpy.restore();
+  })
+});
