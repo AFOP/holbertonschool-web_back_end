@@ -1,40 +1,36 @@
 #!/usr/bin/env python3
 """
-Module documentation: 3-app.py
+Flask app
 """
-
 from flask import Flask, render_template, request
-from flask_babel import Babel, _  # Importar la función de traducción
+from flask_babel import Babel
+
+
+class Config(object):
+    """
+    Config for languages
+    """
+    LANGUAGES = ['en', 'fr']
+    BABEL_DEFAULT_LOCALE = 'en'
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+
 
 app = Flask(__name__)
-
-# Instantiate the Babel object
-babel = Babel()
-
-class Config:
-    """
-    Config class documentation
-    """
-    LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
-
+babel = Babel(app)
 app.config.from_object(Config)
-babel.init_app(app)
+
+
+@app.route('/', methods=["GET"], strict_slashes=False)
+def index():
+    """
+    Return index
+    """
+    return render_template('3-index.html')
+
 
 @babel.localeselector
 def get_locale():
     """
-    Locale selector documentation
+    Get locale selector for babel
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
-
-@app.route('/')
-def index():
-    """
-    Route documentation: /
-    """
-    return render_template('3-index.html')
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
