@@ -9,7 +9,8 @@ from flask_babel import Babel
 app = Flask(__name__)
 
 # Instantiate the Babel object
-babel = Babel(app)
+babel = Babel()
+
 
 class Config:
     """
@@ -19,12 +20,11 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
-# Elimina la instancia de Babel en el nivel del módulo
-# babel = Babel(app)
 
 app.config.from_object(Config)
 
-# Mueve la definición de get_locale antes de la llamada a init_app
+
+# Move the definition of get_locale before init_app
 @babel.localeselector
 def get_locale():
     """
@@ -32,7 +32,9 @@ def get_locale():
     """
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
-babel.init_app(app, locale_selector=get_locale)
+
+babel.init_app(app)
+
 
 @app.route('/')
 def index():
@@ -40,6 +42,7 @@ def index():
     Route documentation: /
     """
     return render_template('2-index.html')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
