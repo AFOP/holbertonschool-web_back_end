@@ -27,7 +27,6 @@ class Config(object):
 
 app.config.from_object(Config)
 
-
 @app.route('/', methods=["GET"], strict_slashes=False)
 def index():
     """
@@ -35,7 +34,7 @@ def index():
     """
     return render_template('2-index.html')
 
-
+@babel.localeselector
 def get_locale():
     """
     Get locale selector for babel
